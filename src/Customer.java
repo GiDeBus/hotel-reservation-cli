@@ -15,4 +15,35 @@ public class Customer {
         this.lastName = lastName;
         this.email = email;
     }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String fistName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        if(!pattern.matcher(email).matches()) {
+            throw new IllegalArgumentException("Invalid email format.");
+        }
+        this.email = email;
+    }
+    @Override
+    public String toString() {
+        return " firstName: " + firstName + " lastName: " + lastName + " email: " + email;
+    }
 }
