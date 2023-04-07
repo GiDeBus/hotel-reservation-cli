@@ -1,5 +1,5 @@
 import models.IRoom;
-
+import java.util.Date;
 public class Reservation {
     private Customer customer;
     private IRoom room;
@@ -13,5 +13,35 @@ public class Reservation {
         this.checkOutDate = checkOutDate;
     }
 
+    public Customer getCustomer() {
+        return customer;
+    }
 
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
+
+    public IRoom getRoom() {
+        return room;
+    }
+
+    public void setRoom(IRoom room) {
+        this.room = room;
+    }
+
+    public Date getCheckInDate() {
+        return checkInDate;
+    }
+
+    public void setCheckInDate(Date checkInDate) {
+        this.checkInDate = checkInDate;
+    }
+
+    public Date getCheckOutDate() {
+        return checkOutDate;
+    }
+
+    public void setCheckOutDate(Date checkOutDate) {
+        this.checkOutDate = checkOutDate;
+    }
 }
