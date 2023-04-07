@@ -2,14 +2,20 @@ import models.RoomType;
 
 public class FreeRoom extends Room {
     public FreeRoom(String roomNumber, Double price, RoomType enumeration) {
-        super();
-        this.roomNumber = roomNumber;
-        this.price = 0.0;
-        this.enumeration = enumeration;
+        super(roomNumber, 0.0, enumeration);
     }
 
     @Override
+    public Double getRoomPrice() {
+        return 0.0;
+    }
+
+    @Override
+    public boolean isFree() {
+        return true;
+    }
+    @Override
     public String toString() {
-        return super().toString() + " Room Number: " + roomNumber + " Room Price: " + "Free" + " Room Type: " + enumeration;
+        return " Free Room: " + super.toString();
     }
 }
