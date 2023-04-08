@@ -1,3 +1,6 @@
+package classes;
+
+import classes.Customer;
 import models.IRoom;
 import java.util.Date;
 public class Reservation {

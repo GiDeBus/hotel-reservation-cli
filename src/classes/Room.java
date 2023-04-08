@@ -1,3 +1,5 @@
+package classes;
+
 import models.IRoom;
 import models.RoomType;
 
@@ -40,7 +42,7 @@ public class Room implements IRoom {
 
     @Override
     public String toString() {
-        return " Room Number: " + roomNumber + " Room Price: " + price + " Room Type: " + enumeration;
+        return " classes.Room Number: " + roomNumber + " classes.Room Price: " + price + " classes.Room Type: " + enumeration;
     }
     @Override
     public boolean isFree() {

@@ -1,3 +1,5 @@
+package classes;
+
 import java.util.regex.Pattern;
 
 public class Customer {

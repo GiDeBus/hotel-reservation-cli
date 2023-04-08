@@ -1,3 +1,6 @@
+package classes;
+
+import classes.Room;
 import models.RoomType;
 
 public class FreeRoom extends Room {
@@ -16,6 +19,6 @@ public class FreeRoom extends Room {
     }
     @Override
     public String toString() {
-        return " Free Room: " + super.toString();
+        return " Free classes.Room: " + super.toString();
     }
 }
