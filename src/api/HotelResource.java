@@ -1,7 +1,12 @@
 package api;
 import services.CustomerService;
 import services.ReservationService;
-import classes.*;
+import classes.Room;
+import models.IRoom;
+import classes.Customer;
+import classes.Reservation
+
+import java.util.Date;
 
 public class HotelResource {
     private static HotelResource hotelResource = new HotelResource();
@@ -10,7 +15,7 @@ public class HotelResource {
     }
 
     public Customer getCustomer(String email) {
-        CustomerService.getCustomerService().getCustomer(email);
+       return CustomerService.getCustomerService().getCustomer(email);
     }
 
     public void createACustomer(String email, String firstName, String lastName) {
@@ -18,6 +23,11 @@ public class HotelResource {
     }
 
     public IRoom getRoom(String roomNumber) {
-        ReservationService.getReservationService().getARoom(roomNumber);
+        return ReservationService.getReservationService().getARoom(roomNumber);
+    }
+
+    public Reservation bookARoom(String customerEmail, IRoom room, Date checkInDate, Date checkOutDate) {
+        Customer customer = getCustomer(customerEmail);
+       return ReservationService.getReservationService().reserveARoom(customer, room, checkInDate, checkOutDate);
     }
 }
