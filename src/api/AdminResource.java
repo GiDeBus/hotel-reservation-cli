@@ -33,4 +33,8 @@ public class AdminResource {
     public Collection<Customer> getAllCustomers() {
         return CustomerService.getCustomerService().getAllCustomers();
     }
+
+    public void displayAllReservations() {
+        ReservationService.getReservationService().printAllReservations();
+    }
 }
