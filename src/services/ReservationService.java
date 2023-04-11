@@ -3,11 +3,9 @@ package services;
 import classes.Reservation;
 import models.IRoom;
 import classes.Customer;
-
-import java.util.Collection;
 import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
+
+import java.util.*;
 
 public class ReservationService {
 
@@ -38,10 +36,21 @@ public class ReservationService {
     }
 
     public Collection<IRoom> findRooms(Date checkInDate, Date checkOutDate) {
-
+        Collection<IRoom> availableRooms = new ArrayList<>();
+        for (Reservation reservation: reservations.values()) {
+            if(reservation.getCheckInDate().compareTo(checkOutDate) <= 1 && reservation.getCheckOutDate().compareTo(checkInDate) >= -1) {
+                availableRooms.add(reservation.getRoom());
+            }
+        }
+        for (IRoom room : rooms.values()) {
+            if(!availableRooms.contains(room)) {
+                availableRooms.add(room);
+            }
+        }
+        return availableRooms;
     }
 
-    public Collection<Reservation> getCustomersReservation() {
+    public Collection<Reservation> getCustomersReservation(Customer customer) {
 
     }
 }
