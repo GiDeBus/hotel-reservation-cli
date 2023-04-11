@@ -1,10 +1,9 @@
 package api;
 import services.CustomerService;
 import services.ReservationService;
-import classes.Room;
 import models.IRoom;
 import classes.Customer;
-import classes.Reservation
+import classes.Reservation;
 
 import java.util.Collection;
 import java.util.Date;
@@ -35,5 +34,9 @@ public class HotelResource {
     public Collection<Reservation> getCustomersReservations(String customerEmail) {
         Customer customer = getCustomer(customerEmail);
         return ReservationService.getReservationService().getCustomersReservation(customer);
+    }
+
+    public Collection<IRoom> findARoom(Date checkIn, Date checkOut) {
+        ReservationService.getReservationService().findRooms(checkIn, checkOut);
     }
 }
