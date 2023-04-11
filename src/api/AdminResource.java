@@ -4,7 +4,10 @@ import services.CustomerService;
 import services.ReservationService;
 import classes.Customer;
 import classes.Room;
+import models.IRoom;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 public class AdminResource {
@@ -21,5 +24,9 @@ public class AdminResource {
         for (Room room : rooms) {
             ReservationService.getReservationService().addRoom(room);
         }
+    }
+
+    public Collection<IRoom> getAllRooms() {
+        return ReservationService.getReservationService().getAllRooms();
     }
 }
