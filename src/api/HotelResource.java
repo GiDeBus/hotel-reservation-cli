@@ -6,6 +6,7 @@ import models.IRoom;
 import classes.Customer;
 import classes.Reservation
 
+import java.util.Collection;
 import java.util.Date;
 
 public class HotelResource {
@@ -29,5 +30,10 @@ public class HotelResource {
     public Reservation bookARoom(String customerEmail, IRoom room, Date checkInDate, Date checkOutDate) {
         Customer customer = getCustomer(customerEmail);
        return ReservationService.getReservationService().reserveARoom(customer, room, checkInDate, checkOutDate);
+    }
+
+    public Collection<Reservation> getCustomersReservations(String customerEmail) {
+        Customer customer = getCustomer(customerEmail);
+        return ReservationService.getReservationService().getCustomersReservation(customer);
     }
 }
