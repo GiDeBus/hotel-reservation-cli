@@ -3,8 +3,6 @@ package classes;
 import java.util.Scanner;
 
 import api.AdminResource;
-import services.ReservationService;
-import services.CustomerService;
 public class AdminMenu {
     public static void main (String[] args) {
         boolean keepRunning = true;
@@ -23,33 +21,30 @@ public class AdminMenu {
 
                     int selection = Integer.parseInt(scanner.nextLine());
 
-                    if (selection == 1) {
-                        AdminResource.getAdminResource().getAllCustomers();
+                    switch(selection) {
+                        case 1:
+                            AdminResource.getAdminResource().getAllCustomers();
 
-                    } else if (selection == 2) {
-                        AdminResource.getAdminResource().getAllRooms();
+                        case 2:
+                            AdminResource.getAdminResource().getAllRooms();
 
-                    } else if (selection == 3) {
-                        AdminResource.getAdminResource().displayAllReservations();
+                        case 3:
+                            AdminResource.getAdminResource().displayAllReservations();
 
-                    }else if (selection == 4) {
-                        /* Add a room parameters */
-                        // AdminResource.getAdminResource().addRoom();
+                        case 4:
+                            /* Add a room parameters */
+                            // AdminResource.getAdminResource().addRoom();
 
-                    } else if (selection == 5) {
-                        keepRunning = false;
+                        case 5:
+                            keepRunning = false;
 
-                    } else {
-                        System.out.println("Please enter a number between 1 and 5");
-
+                        default:
+                            System.out.println("Please enter a number between 1 and 5");
                     }
 
                 } catch(Exception exception) {
-                    System.out.println("\nError - Invalid Input\n");
-
-                } finally {
-                    scanner.close();
-
+                    exception.getLocalizedMessage();
+                    scanner.nextLine();
                 }
             }
         }
