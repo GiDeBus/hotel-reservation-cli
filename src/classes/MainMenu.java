@@ -42,7 +42,7 @@ public class MainMenu {
 
                         case 3:
                             System.out.println("Enter Email format: name@domain.com");
-                            email = scanner.nextLine();
+                            String customerEmail = scanner.nextLine();
 
                             System.out.println("First Name");
                             String firstName = scanner.nextLine();
@@ -50,7 +50,7 @@ public class MainMenu {
                             System.out.println("Last Name");
                             String lastName = scanner.nextLine();
 
-                            HotelResource.getHotelResource().createACustomer(email, firstName, lastName);
+                            HotelResource.getHotelResource().createACustomer(customerEmail, firstName, lastName);
 
                         case 4:
                             AdminMenu.main(null);

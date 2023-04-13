@@ -16,7 +16,7 @@ public class CustomerService {
         return customerService;
     }
     public void addCustomer(String email, String firstName, String lastName) {
-        Customer customer = new Customer(email, firstName, lastName);
+        Customer customer = new Customer(firstName, lastName, email);
         customers.put(email, customer);
     }
     public Customer getCustomer(String customerEmail) {
