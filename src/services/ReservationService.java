@@ -10,11 +10,15 @@ import java.util.*;
 public class ReservationService {
 
     private static ReservationService reservationService = new ReservationService();
+
     public static ReservationService getReservationService() {
         return reservationService;
     }
+
     private static final Map<String, IRoom> rooms = new HashMap<>();
+
     private static final Collection<Reservation> reservations = new ArrayList<>();
+
     public void addRoom(IRoom room) {
         rooms.put(room.getRoomNumber(), room);
     }

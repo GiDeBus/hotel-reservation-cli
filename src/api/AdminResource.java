@@ -6,12 +6,13 @@ import classes.Customer;
 import classes.Room;
 import models.IRoom;
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
 public class AdminResource {
+
     private static AdminResource adminResource = new AdminResource();
+
     public static AdminResource getAdminResource() {
         return adminResource;
     }
