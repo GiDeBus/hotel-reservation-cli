@@ -34,11 +34,13 @@ public class MainMenu {
 
                             System.out.println("Enter CheckIn Date mm/dd/yyyy: Example - 02/01/2020");
                             String checkOut = scanner.nextLine();
+                            break;
 
                         case 2:
                             System.out.println("Enter Email format: name@domain.com");
                             String email = scanner.nextLine();
                             HotelResource.getHotelResource().getCustomersReservations(email);
+                            break;
 
                         case 3:
                             System.out.println("Enter Email format: name@domain.com");
@@ -51,9 +53,11 @@ public class MainMenu {
                             String lastName = scanner.nextLine();
 
                             HotelResource.getHotelResource().createACustomer(customerEmail, firstName, lastName);
+                            break;
 
                         case 4:
                             AdminMenu.main(null);
+                            break;
 
                         case 5:
                             System.out.println("Thank you for your visit.");
@@ -64,8 +68,9 @@ public class MainMenu {
                     }
 
                 } catch (Exception exception) {
+                    // Broken it displays error and exits
                     System.out.println("Error: " + exception.getMessage());
-                    scanner.nextLine();
+                    scanner.next();
                 }
             }
         }

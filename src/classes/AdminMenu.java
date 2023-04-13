@@ -1,12 +1,16 @@
 package classes;
 
-import java.util.Scanner;
+import java.util.*;
 
 import api.AdminResource;
+import models.IRoom;
+import models.RoomType;
+
 public class AdminMenu {
     public static void main (String[] args) {
         boolean keepRunning = true;
-        try(Scanner scanner = new Scanner(System.in)) {
+        Scanner scanner = new Scanner(System.in);
+
             while(keepRunning) {
                 try {
                     System.out.println("Admin Menu");
@@ -21,32 +25,61 @@ public class AdminMenu {
 
                     int selection = Integer.parseInt(scanner.nextLine());
 
-                    switch(selection) {
+                    switch (selection) {
                         case 1:
-                            AdminResource.getAdminResource().getAllCustomers();
+                            Collection<Customer> customers = AdminResource.getAdminResource().getAllCustomers();
+                            for (Customer customer : customers) {
+                                System.out.println(customer.toString());
+                            }
+                            break;
 
                         case 2:
-                            AdminResource.getAdminResource().getAllRooms();
+                            Collection<IRoom> rooms = AdminResource.getAdminResource().getAllRooms();
+                            for (IRoom room : rooms) {
+                                System.out.println(room.toString());
+                            }
 
                         case 3:
                             AdminResource.getAdminResource().displayAllReservations();
 
                         case 4:
-                            /* Add a room parameters */
-                            // AdminResource.getAdminResource().addRoom();
+                            Scanner newRoomScanner = new Scanner(System.in);
+
+                            System.out.println("Enter Room Number: ");
+                            String roomNumber = newRoomScanner.nextLine();
+
+                            System.out.println("Enter Room Price: ");
+                            System.out.println("(Enter 0.0 if free) ");
+                            Double roomPrice = Double.valueOf(newRoomScanner.nextLine());
+
+                            System.out.println("Enter Room Type: ");
+                            System.out.println("Format: SINGLE/DOUBLE ");
+                            RoomType roomType = RoomType.valueOf(newRoomScanner.nextLine());
+
+                            List<Room> newRooms = new ArrayList<>();
+
+                            if (roomPrice == 0.0) {
+                                Room freeRoom = new FreeRoom(roomNumber, roomPrice, roomType);
+                                newRooms.add(freeRoom);
+                            } else {
+                                Room room = new Room(roomNumber, roomPrice, roomType);
+                                newRooms.add(room);
+                            }
+
+                            AdminResource.getAdminResource().addRoom(newRooms);
+                            newRoomScanner.close();
+                            break;
 
                         case 5:
                             keepRunning = false;
 
                         default:
-                            System.out.println("Please enter a number between 1 and 5");
+                            System.out.println("Invalid input: Please enter a number between 1 and 5.\n");
                     }
-
                 } catch(Exception exception) {
-                    exception.getLocalizedMessage();
-                    scanner.nextLine();
+                    exception.getMessage();
+                    System.out.println("Invalid input: Please enter a number between 1 and 5.\n");
                 }
             }
-        }
     }
 }
