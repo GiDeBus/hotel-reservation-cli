@@ -95,9 +95,7 @@ public class MainMenu {
                     }
 
                 } catch (Exception exception) {
-                    // Broken it displays error and exits
                     System.out.println("Error: " + exception.getMessage());
-                    scanner.next();
                 }
             }
         }
