@@ -1,5 +1,6 @@
 package classes;
 
+import java.util.Collection;
 import java.util.Scanner;
 
 import api.HotelResource;
@@ -39,7 +40,10 @@ public class MainMenu {
                         case 2:
                             System.out.println("Enter Email format: name@domain.com");
                             String email = scanner.nextLine();
-                            HotelResource.getHotelResource().getCustomersReservations(email);
+                            Collection<Reservation> reservations = HotelResource.getHotelResource().getCustomersReservations(email);
+                            for (Reservation reservation: reservations) {
+                                System.out.println(reservation.toString());
+                            }
                             break;
 
                         case 3:
