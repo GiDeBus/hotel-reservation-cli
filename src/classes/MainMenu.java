@@ -1,9 +1,13 @@
 package classes;
 
+import java.text.SimpleDateFormat;
 import java.util.Collection;
+import java.util.Date;
 import java.util.Scanner;
 
 import api.HotelResource;
+import models.IRoom;
+
 public class MainMenu {
 
     public static void main(String[] args) {
@@ -29,19 +33,38 @@ public class MainMenu {
 
                     switch(selection) {
                         case 1:
-                            // Find and reserve a room
                             System.out.println("Enter CheckIn Date mm/dd/yyyy: Example - 02/01/2020");
-                            String checkIn = scanner.nextLine();
+                            Date checkIn = new SimpleDateFormat("mm/dd/yyyy").parse(scanner.nextLine());
 
                             System.out.println("Enter CheckIn Date mm/dd/yyyy: Example - 02/01/2020");
-                            String checkOut = scanner.nextLine();
+                            Date checkOut = new SimpleDateFormat("mm/dd/yyyy").parse(scanner.nextLine());
+
+                            Collection<IRoom> rooms = HotelResource.getHotelResource().findARoom(checkIn, checkOut);
+                            for(IRoom room: rooms) {
+                                System.out.println(room);
+                            }
+
+                            System.out.println("Enter room number: ");
+                            IRoom room = HotelResource.getHotelResource().getRoom(scanner.nextLine());
+
+                            System.out.println("Enter email address: ");
+                            String email = scanner.nextLine();
+
+                            HotelResource.getHotelResource().bookARoom(email, room, checkIn, checkOut);
+
+                            System.out.println("Here are your reservations: \n");
+                            Collection<Reservation> reservations = HotelResource.getHotelResource().getCustomersReservations(email);
+                            for (Reservation reservation: reservations) {
+                                System.out.println(reservation.toString());
+                            }
+
                             break;
 
                         case 2:
                             System.out.println("Enter Email format: name@domain.com");
-                            String email = scanner.nextLine();
-                            Collection<Reservation> reservations = HotelResource.getHotelResource().getCustomersReservations(email);
-                            for (Reservation reservation: reservations) {
+                            String userEmail = scanner.nextLine();
+                            Collection<Reservation> userReservations = HotelResource.getHotelResource().getCustomersReservations(userEmail);
+                            for (Reservation reservation: userReservations) {
                                 System.out.println(reservation.toString());
                             }
                             break;
