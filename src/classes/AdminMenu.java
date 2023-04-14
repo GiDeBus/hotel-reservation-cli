@@ -38,9 +38,11 @@ public class AdminMenu {
                             for (IRoom room : rooms) {
                                 System.out.println(room.toString());
                             }
+                            break;
 
                         case 3:
                             AdminResource.getAdminResource().displayAllReservations();
+                            break;
 
                         case 4:
                             Scanner newRoomScanner = new Scanner(System.in);
@@ -67,18 +69,17 @@ public class AdminMenu {
                             }
 
                             AdminResource.getAdminResource().addRoom(newRooms);
-                            newRoomScanner.close();
                             break;
 
                         case 5:
                             keepRunning = false;
 
                         default:
-                            System.out.println("Invalid input: Please enter a number between 1 and 5.\n");
+                            System.out.println("Invalid choice. Please try again.");
                     }
                 } catch(Exception exception) {
                     exception.getMessage();
-                    System.out.println("Invalid input: Please enter a number between 1 and 5.\n");
+                    System.out.println("Invalid input. Please enter a number.");
                 }
             }
     }
