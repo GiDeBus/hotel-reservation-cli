@@ -5,6 +5,7 @@ import java.util.*;
 import api.AdminResource;
 import models.IRoom;
 import models.RoomType;
+import services.ReservationService;
 
 public class AdminMenu {
     public static void main (String[] args) {
@@ -49,6 +50,13 @@ public class AdminMenu {
 
                             System.out.println("Enter Room Number: ");
                             String roomNumber = newRoomScanner.nextLine();
+
+                            try {
+                                int room = Integer.parseInt(roomNumber);
+                            } catch(NumberFormatException exception) {
+                                System.out.println("Error: Value provided is not a valid number");
+                                break;
+                            }
 
                             System.out.println("Enter Room Price: ");
                             System.out.println("(Enter 0.0 if free) ");
