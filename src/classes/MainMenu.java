@@ -50,6 +50,11 @@ public class MainMenu {
                             System.out.println("Enter email address: ");
                             String email = scanner.nextLine();
 
+                            if(HotelResource.getHotelResource().getCustomer(email) == null) {
+                                System.out.println("Error: Account does not exist or match \n");
+                                break;
+                            }
+
                             HotelResource.getHotelResource().bookARoom(email, room, checkIn, checkOut);
 
                             System.out.println("Here are your reservations: \n");
