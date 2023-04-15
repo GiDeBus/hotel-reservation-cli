@@ -34,10 +34,10 @@ public class MainMenu {
                     switch(selection) {
                         case 1:
                             System.out.println("Enter CheckIn Date mm/dd/yyyy: Example - 02/01/2020");
-                            Date checkIn = new SimpleDateFormat("mm/dd/yyyy").parse(scanner.nextLine());
+                            Date checkIn = new SimpleDateFormat("MM/dd/yyyy").parse(scanner.nextLine());
 
                             System.out.println("Enter CheckIn Date mm/dd/yyyy: Example - 02/01/2020");
-                            Date checkOut = new SimpleDateFormat("mm/dd/yyyy").parse(scanner.nextLine());
+                            Date checkOut = new SimpleDateFormat("MM/dd/yyyy").parse(scanner.nextLine());
 
                             Collection<IRoom> rooms = HotelResource.getHotelResource().findARoom(checkIn, checkOut);
                             for(IRoom room: rooms) {
