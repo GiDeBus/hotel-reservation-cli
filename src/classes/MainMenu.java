@@ -48,7 +48,7 @@ public class MainMenu {
                                 System.out.println("No rooms are available do you want to checks some suggestions? y/n");
                                 String answer = scanner.nextLine();
 
-                                if(answer == "y") {
+                                if(answer.equals("y")) {
                                     Calendar calendar = Calendar.getInstance();
                                     calendar.setTime(checkIn);
                                     calendar.add(Calendar.DATE, 7);

@@ -44,15 +44,10 @@ public class ReservationService {
     }
 
     public Collection<IRoom> findRooms(Date checkInDate, Date checkOutDate) {
-        Collection<IRoom> availableRooms = new ArrayList<>();
-        for (Reservation reservation: reservations) {
-            if(reservation.getCheckInDate().compareTo(checkOutDate) <= 1 && reservation.getCheckOutDate().compareTo(checkInDate) >= -1) {
-                availableRooms.add(reservation.getRoom());
-            }
-        }
-        for (IRoom room : rooms.values()) {
-            if(!availableRooms.contains(room)) {
-                availableRooms.add(room);
+        Collection<IRoom> availableRooms = new ArrayList<>(rooms.values());
+        for (Reservation reservation : reservations) {
+            if (reservation.getCheckInDate().before(checkOutDate) && reservation.getCheckOutDate().after(checkInDate)) {
+                availableRooms.remove(reservation.getRoom());
             }
         }
         return availableRooms;
