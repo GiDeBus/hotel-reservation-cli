@@ -4,6 +4,7 @@ import java.text.SimpleDateFormat;
 import java.util.Collection;
 import java.util.Date;
 import java.util.Scanner;
+import java.util.Calendar;
 
 import api.HotelResource;
 import models.IRoom;
@@ -42,6 +43,31 @@ public class MainMenu {
                             Collection<IRoom> rooms = HotelResource.getHotelResource().findARoom(checkIn, checkOut);
                             for(IRoom room: rooms) {
                                 System.out.println(room);
+                            }
+                            if (rooms.isEmpty()) {
+                                System.out.println("No rooms are available do you want to checks some suggestions? y/n");
+                                String answer = scanner.nextLine();
+
+                                if(answer == "y") {
+                                    Calendar calendar = Calendar.getInstance();
+                                    calendar.setTime(checkIn);
+                                    calendar.add(Calendar.DATE, 7);
+                                    Date recommendedCheckIn = calendar.getTime();
+                                    checkIn = recommendedCheckIn;
+
+                                    calendar.setTime(checkOut);
+                                    calendar.add(Calendar.DATE, 7);
+                                    Date recommendedCheckOut = calendar.getTime();
+                                    checkOut = recommendedCheckOut;
+
+                                    Collection<IRoom> suggestedRooms = HotelResource.getHotelResource().findARoom(checkIn, checkOut);
+                                    for(IRoom room: suggestedRooms) {
+                                        System.out.println(room);
+                                    }
+                                }  else {
+                                    System.out.println("Sorry about that. Check back later! \n");
+                                    break;
+                                }
                             }
 
                             System.out.println("Enter room number: ");

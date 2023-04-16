@@ -39,7 +39,7 @@ public class ReservationService {
 
     public void printAllReservations() {
         for (Reservation reservation : reservations) {
-            System.out.println(reservation);
+            System.out.println(reservation.toString());
         }
     }
 

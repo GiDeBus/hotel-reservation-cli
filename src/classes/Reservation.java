@@ -47,4 +47,8 @@ public class Reservation {
     public void setCheckOutDate(Date checkOutDate) {
         this.checkOutDate = checkOutDate;
     }
+
+    public String toString() {
+        return "customer: " + customer + " room: " + room + " checkInDate: " + checkInDate + " checkOutDate: " + checkOutDate;
+    }
 }
