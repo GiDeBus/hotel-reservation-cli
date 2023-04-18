@@ -8,7 +8,7 @@ import java.util.Objects;
 public class Room implements IRoom {
     private String roomNumber;
     private Double price;
-    private RoomType enumeration;
+    public RoomType enumeration;
 
     public Room(String roomNumber, Double price, RoomType enumeration) {
         this.roomNumber = roomNumber;
@@ -20,9 +20,6 @@ public class Room implements IRoom {
         return roomNumber;
     }
 
-    public void setRoomNumber(String roomNumber) {
-        this.roomNumber = roomNumber;
-    }
     @Override
     public Double getRoomPrice() {
         return price;
@@ -48,10 +45,6 @@ public class Room implements IRoom {
     @Override
     public RoomType getRoomType() {
         return enumeration;
-    }
-
-    public void setRoomType( RoomType enumeration) {
-        this.enumeration = enumeration;
     }
 
     @Override

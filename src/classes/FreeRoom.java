@@ -6,6 +6,7 @@ public class FreeRoom extends Room {
     public FreeRoom(String roomNumber, Double price, RoomType enumeration) {
         super(roomNumber, 0.0, enumeration);
     }
+    public boolean isFree = true;
 
     @Override
     public Double getRoomPrice() {
@@ -18,6 +19,6 @@ public class FreeRoom extends Room {
     }
     @Override
     public String toString() {
-        return " Free " + super.toString();
+        return " isFree: " + isFree + " " + super.toString();
     }
 }
