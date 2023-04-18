@@ -29,6 +29,7 @@ public class Room implements IRoom {
     public void setRoomPrice(Double price) {
         this.price = price;
     }
+
     @Override
     public RoomType getRoomType() {
         return enumeration;

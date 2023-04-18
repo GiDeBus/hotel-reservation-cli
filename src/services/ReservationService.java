@@ -15,20 +15,28 @@ public class ReservationService {
         return reservationService;
     }
 
-    private static final Map<String, IRoom> rooms = new HashMap<>();
+    private static final Collection<IRoom> rooms = new HashSet<>();
 
     private static final Collection<Reservation> reservations = new ArrayList<>();
 
     public void addRoom(IRoom room) {
-        rooms.put(room.getRoomNumber(), room);
+        if (rooms.contains(room)) {
+            throw new IllegalArgumentException("Room already exists");
+        }
+        rooms.add(room);
     }
 
-    public IRoom getARoom(String roomId) {
-        return rooms.get(roomId);
+    public IRoom getARoom(String roomNumber) {
+        for (IRoom room : rooms) {
+            if(room.getRoomNumber() == roomNumber) {
+                return room;
+            }
+        }
+        return null;
     }
 
     public Collection<IRoom> getAllRooms() {
-        return rooms.values();
+        return rooms;
     }
 
     public Reservation reserveARoom(Customer customer, IRoom room, Date checkInDate, Date checkOutDate) {
@@ -44,7 +52,7 @@ public class ReservationService {
     }
 
     public Collection<IRoom> findRooms(Date checkInDate, Date checkOutDate) {
-        Collection<IRoom> availableRooms = new ArrayList<>(rooms.values());
+        Collection<IRoom> availableRooms = new ArrayList<>(rooms);
         for (Reservation reservation : reservations) {
             if (reservation.getCheckInDate().before(checkOutDate) && reservation.getCheckOutDate().after(checkInDate)) {
                 availableRooms.remove(reservation.getRoom());
