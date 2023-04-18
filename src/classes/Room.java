@@ -3,8 +3,6 @@ package classes;
 import models.IRoom;
 import models.RoomType;
 
-import java.util.Enumeration;
-
 public class Room implements IRoom {
     private String roomNumber;
     private Double price;
