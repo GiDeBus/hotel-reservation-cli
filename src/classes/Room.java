@@ -41,7 +41,7 @@ public class Room implements IRoom {
 
     @Override
     public String toString() {
-        return " Room Number: " + roomNumber + " Room Price: " + price + " Room Type: " + enumeration;
+        return " Room{ " + "roomNumber: " + roomNumber + " price: " + price + " roomType: " + enumeration + " }";
     }
     @Override
     public boolean isFree() {
