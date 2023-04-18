@@ -3,6 +3,8 @@ package classes;
 import models.IRoom;
 import models.RoomType;
 
+import java.util.Objects;
+
 public class Room implements IRoom {
     private String roomNumber;
     private Double price;
@@ -24,6 +26,19 @@ public class Room implements IRoom {
     @Override
     public Double getRoomPrice() {
         return price;
+    }
+
+    @Override
+    public boolean equals(Object object) {
+        if ( this == object) return true;
+        if (!(object instanceof IRoom)) return false;
+        IRoom room = (IRoom) object;
+        return Objects.equals(roomNumber, room.getRoomNumber());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(roomNumber);
     }
 
     public void setRoomPrice(Double price) {
