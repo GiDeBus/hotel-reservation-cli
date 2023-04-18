@@ -6,13 +6,18 @@ import java.util.Map;
 
 import classes.Customer;
 
-public class CustomerService {
+public final class CustomerService {
+
+    private CustomerService() {};
 
     private static CustomerService customerService = new CustomerService();
 
     private static final Map<String, Customer> customers = new HashMap<>();
 
-    public static CustomerService getCustomerService() {
+    public static CustomerService getInstance() {
+        if (customerService == null) {
+            customerService = new CustomerService();
+        }
         return customerService;
     }
 

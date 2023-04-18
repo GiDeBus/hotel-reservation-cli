@@ -7,11 +7,15 @@ import java.util.Date;
 
 import java.util.*;
 
-public class ReservationService {
+public final class ReservationService {
+
+    private ReservationService() {
+
+    }
 
     private static ReservationService reservationService = new ReservationService();
 
-    public static ReservationService getReservationService() {
+    public static ReservationService getInstance() {
         return reservationService;
     }
 

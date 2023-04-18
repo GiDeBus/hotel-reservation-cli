@@ -15,28 +15,28 @@ public class HotelResource {
     }
 
     public Customer getCustomer(String email) {
-       return CustomerService.getCustomerService().getCustomer(email);
+       return CustomerService.getInstance().getCustomer(email);
     }
 
     public void createACustomer(String email, String firstName, String lastName) {
-        CustomerService.getCustomerService().addCustomer(email, firstName, lastName);
+        CustomerService.getInstance().addCustomer(email, firstName, lastName);
     }
 
     public IRoom getRoom(String roomNumber) {
-        return ReservationService.getReservationService().getARoom(roomNumber);
+        return ReservationService.getInstance().getARoom(roomNumber);
     }
 
     public Reservation bookARoom(String customerEmail, IRoom room, Date checkInDate, Date checkOutDate) {
         Customer customer = getCustomer(customerEmail);
-       return ReservationService.getReservationService().reserveARoom(customer, room, checkInDate, checkOutDate);
+       return ReservationService.getInstance().reserveARoom(customer, room, checkInDate, checkOutDate);
     }
 
     public Collection<Reservation> getCustomersReservations(String customerEmail) {
         Customer customer = getCustomer(customerEmail);
-        return ReservationService.getReservationService().getCustomersReservation(customer);
+        return ReservationService.getInstance().getCustomersReservation(customer);
     }
 
     public Collection<IRoom> findARoom(Date checkIn, Date checkOut) {
-        return ReservationService.getReservationService().findRooms(checkIn, checkOut);
+        return ReservationService.getInstance().findRooms(checkIn, checkOut);
     }
 }

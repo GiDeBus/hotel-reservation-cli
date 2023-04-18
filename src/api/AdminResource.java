@@ -18,24 +18,24 @@ public class AdminResource {
     }
 
     public Customer getCustomer(String email) {
-        return CustomerService.getCustomerService().getCustomer(email);
+        return CustomerService.getInstance().getCustomer(email);
     }
 
     public void addRoom(List<Room> rooms) {
         for (Room room : rooms) {
-            ReservationService.getReservationService().addRoom(room);
+            ReservationService.getInstance().addRoom(room);
         }
     }
 
     public Collection<IRoom> getAllRooms() {
-        return ReservationService.getReservationService().getAllRooms();
+        return ReservationService.getInstance().getAllRooms();
     }
 
     public Collection<Customer> getAllCustomers() {
-        return CustomerService.getCustomerService().getAllCustomers();
+        return CustomerService.getInstance().getAllCustomers();
     }
 
     public void displayAllReservations() {
-        ReservationService.getReservationService().printAllReservations();
+        ReservationService.getInstance().printAllReservations();
     }
 }
