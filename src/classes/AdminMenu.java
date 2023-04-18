@@ -86,7 +86,7 @@ public class AdminMenu {
                     }
                 } catch(Exception exception) {
                     exception.getMessage();
-                    System.out.println("Invalid input. Please enter a number.");
+                    System.out.println("Invalid input.");
                 }
             }
     }
