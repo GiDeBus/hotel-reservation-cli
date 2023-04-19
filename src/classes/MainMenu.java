@@ -41,7 +41,7 @@ public class MainMenu {
                             Date checkOut = new SimpleDateFormat("MM/dd/yyyy").parse(scanner.nextLine());
 
                             Collection<IRoom> rooms = HotelResource.getHotelResource().findARoom(checkIn, checkOut);
-                            for(IRoom room: rooms) {
+                            for(IRoom room : rooms) {
                                 System.out.println(room);
                             }
                             if (rooms.isEmpty()) {

@@ -21,7 +21,7 @@ public final class ReservationService {
 
     private static final Collection<IRoom> rooms = new HashSet<>();
 
-    private static final Collection<Reservation> reservations = new ArrayList<>();
+    private static final Collection<Reservation> reservations = new HashSet<>();
 
     public void addRoom(IRoom room) {
         if (rooms.contains(room)) {
@@ -32,7 +32,7 @@ public final class ReservationService {
 
     public IRoom getARoom(String roomNumber) {
         for (IRoom room : rooms) {
-            if(room.getRoomNumber() == roomNumber) {
+            if(room.getRoomNumber().equals(roomNumber)) {
                 return room;
             }
         }
@@ -58,7 +58,7 @@ public final class ReservationService {
     public Collection<IRoom> findRooms(Date checkInDate, Date checkOutDate) {
         Collection<IRoom> availableRooms = new ArrayList<>(rooms);
         for (Reservation reservation : reservations) {
-            if (reservation.getCheckInDate().before(checkOutDate) && reservation.getCheckOutDate().after(checkInDate)) {
+            if ((checkInDate.before(reservation.getCheckOutDate()) && checkOutDate.after(reservation.getCheckInDate())) || (checkInDate.equals(reservation.getCheckInDate()) && checkOutDate.equals(reservation.getCheckOutDate()))) {
                 availableRooms.remove(reservation.getRoom());
             }
         }
