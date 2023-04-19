@@ -1,8 +1,8 @@
 package services;
 
-import classes.Reservation;
+import models.Reservation;
 import models.IRoom;
-import classes.Customer;
+import models.Customer;
 import java.util.Date;
 
 import java.util.*;

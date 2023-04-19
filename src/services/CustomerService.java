@@ -4,7 +4,7 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
-import classes.Customer;
+import models.Customer;
 
 public final class CustomerService {
 

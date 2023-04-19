@@ -1,4 +1,4 @@
-package classes;
+package models;
 
 import models.IRoom;
 import models.RoomType;

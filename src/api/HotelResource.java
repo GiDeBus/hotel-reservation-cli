@@ -2,8 +2,8 @@ package api;
 import services.CustomerService;
 import services.ReservationService;
 import models.IRoom;
-import classes.Customer;
-import classes.Reservation;
+import models.Customer;
+import models.Reservation;
 
 import java.util.Collection;
 import java.util.Date;

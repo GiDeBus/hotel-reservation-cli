@@ -1,5 +1,6 @@
-package classes;
+package models;
 
+import models.Room;
 import models.RoomType;
 
 public class FreeRoom extends Room {

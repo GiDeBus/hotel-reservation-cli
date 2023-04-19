@@ -1,4 +1,4 @@
-package classes;
+package components;
 
 import java.text.SimpleDateFormat;
 import java.util.Collection;
@@ -8,6 +8,7 @@ import java.util.Calendar;
 
 import api.HotelResource;
 import models.IRoom;
+import models.Reservation;
 
 public class MainMenu {
 

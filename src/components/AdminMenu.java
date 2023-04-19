@@ -1,10 +1,9 @@
-package classes;
+package components;
 
 import java.util.*;
 
 import api.AdminResource;
-import models.IRoom;
-import models.RoomType;
+import models.*;
 
 public class AdminMenu {
     public static void main (String[] args) {
